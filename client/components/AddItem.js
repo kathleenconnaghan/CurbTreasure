@@ -21,6 +21,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
+    color:'#8b7155',
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  
 }));
 
 //-------------------Add Item Class Component

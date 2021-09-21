@@ -2,30 +2,30 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../store";
-
 import { me } from "../store";
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, createTheme } from "@material-ui/core/styles";
 import Link from "@material-ui/core/Link";
 import Toolbar from "@material-ui/core/Toolbar";
 import MuiAppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { palette } from '@material-ui/system';
+
+
 
 function AppBar(props) {
-  return <MuiAppBar elevation={0} position="static" {...props} />;
+  return <MuiAppBar elevation={0} position="static" {...props} color="#ffffff"
+  />;
 }
 
-// AppBar.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
 
 const toolbarStyles = theme => ({
   root: {
+    color:"#8b7155",
     height: 64,
     [theme.breakpoints.up("sm")]: {
-      height: 70,
+      height: 20,
     },
   },
 });
@@ -33,10 +33,15 @@ const toolbarStyles = theme => ({
 //-------------------------------STYLES
 
 const styles = theme => ({
+  
   title: {
     fontSize: 24,
+    color: theme.palette.primary.main
   },
-  placeholder: toolbarStyles(theme).root,
+  toolbar: {
+    color: '#00000',
+    background: '#ffffff',
+  },
 
   left: {
     flex: 1,
@@ -52,11 +57,13 @@ const styles = theme => ({
   rightLink: {
     fontSize: 16,
     color: theme.palette.common.white,
+    background: theme.palette.common.green,
     marginLeft: theme.spacing(3),
   },
   linkSecondary: {
     color: theme.palette.secondary.main,
   },
+
 });
 
 //=========================== Component
@@ -88,7 +95,7 @@ class Navbar extends React.Component {
                     />
                   </Button>
                   <Button
-                    
+                    style={{ backgroundColor: '#8b7155', margin: 10 }}
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -97,7 +104,7 @@ class Navbar extends React.Component {
                     {"Browse Items"}
                   </Button>
                   <Button
-                    
+                    style={{ backgroundColor: '#8b7155', margin: 10 }}
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -106,7 +113,7 @@ class Navbar extends React.Component {
                     {"Add Item"}
                   </Button>
                   <Button
-                 
+                  style={{ backgroundColor: '#8b7155', margin: 10 }}
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -120,15 +127,15 @@ class Navbar extends React.Component {
                 </Toolbar>
               </AppBar>
             </div>
-          ) : (
+          ) : ( // If the user is not logged in
             <div>
               <AppBar position="fixed">
                 <Toolbar className={styles.toolbar}>
                   <div className={styles.left} />
                   <Button
-                   
+                 
                     underline="none"
-                    color="inherit"
+                
                     className={styles.title}
                     href="/"
                   >
@@ -137,7 +144,7 @@ class Navbar extends React.Component {
                     />
                   </Button>
                   <Button
-                   
+                   style={{ backgroundColor: '#8b7155', margin: 10 }}
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -148,7 +155,7 @@ class Navbar extends React.Component {
                   <div className={styles.right}>
                     <Button
                       color="inherit"
-                      
+                      style={{ backgroundColor: '#8b7155', margin: 10 }}
                       underline="none"
                       className={styles.rightLink}
                       href="/login"
@@ -157,7 +164,7 @@ class Navbar extends React.Component {
                     </Button>
                     <Button
                       color="inherit"
-                     
+                      style={{ backgroundColor: '#8b7155', margin: 10 }}
                       underline="none"
                       className={styles.rightLink}
                       href="/signup"

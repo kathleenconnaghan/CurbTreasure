@@ -30,6 +30,7 @@ const styles = theme => ({
   media: {
     height: 275,
   },
+
 });
 
 export class Items extends React.Component {
@@ -78,7 +79,7 @@ export class Items extends React.Component {
         </Typography>
       </CardContent>
       <CardActions>
-      <Button size = 'small' href ={`/items/${item.id}`}className="itemlink"> {"View"}</Button>
+      <Button size = 'small' href ={`/items/${item.id}`}className="itemlink" > {"View"}</Button>
 
       </CardActions>
     </Card>
