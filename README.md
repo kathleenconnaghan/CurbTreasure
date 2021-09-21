@@ -32,5 +32,4 @@ You'll also want to run npm run start:dev ( localhost:8080 )
 ## Why'd ya do it?
 Undertaken as a solo project while attending the GraceHopper program with FullStack Academy 2021
 
-# erwergreg24t4w3f
-# erwergreg24t4w3f
+

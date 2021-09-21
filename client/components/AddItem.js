@@ -159,7 +159,7 @@ class AddItem extends React.Component {
 
            <div>
   
-               <Button input type="file" onChange={this.onFileChange}
+               {/* <Button input type="file" onChange={this.onFileChange}
             type="submit"
             fullWidth
             variant="contained"
@@ -167,7 +167,37 @@ class AddItem extends React.Component {
             startIcon= {<AddPhotoAlternateIcon />}
           >
             {"Provide A Photo"}
+          </Button> */}
+
+          {/* <Button input type="file" onChange={this.onFileChange}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            startIcon= {<AddPhotoAlternateIcon />}
+          >
+            {"Provide A Photo"}
+          </Button> */}
+
+          <Button
+            variant="contained"
+            component="label"
+            color="primary"
+          >
+            Provide a Photo
+            <input
+              type="file"
+              hidden
+              onChange={this.onFileChange}
+            />
           </Button>
+
+          {/* <div>
+            <input type="file" name="file"/>
+            <div>
+              <button >Submit</button>
+            </div>
+          </div> */}
 
            </div>
         {this.fileData()}

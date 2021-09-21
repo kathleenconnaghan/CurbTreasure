@@ -17,9 +17,9 @@ function AppBar(props) {
   return <MuiAppBar elevation={0} position="static" {...props} />;
 }
 
-AppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// AppBar.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
 const toolbarStyles = theme => ({
   root: {
@@ -63,7 +63,7 @@ const styles = theme => ({
 
 class Navbar extends React.Component {
   render() {
-    const { classes } = styles;
+
     return (
       <div id="navbar">
         <img src="https://img.icons8.com/bubbles/2x/treasure-chest.png" />
@@ -75,7 +75,7 @@ class Navbar extends React.Component {
                 <Toolbar className={styles.toolbar}>
                   <div className={styles.left} />
                   <Button
-                    variant="h6"
+                 
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -88,7 +88,7 @@ class Navbar extends React.Component {
                     />
                   </Button>
                   <Button
-                    variant="h6"
+                    
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -97,7 +97,7 @@ class Navbar extends React.Component {
                     {"Browse Items"}
                   </Button>
                   <Button
-                    variant="h6"
+                    
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -106,7 +106,7 @@ class Navbar extends React.Component {
                     {"Add Item"}
                   </Button>
                   <Button
-                    variant="h6"
+                 
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -126,7 +126,7 @@ class Navbar extends React.Component {
                 <Toolbar className={styles.toolbar}>
                   <div className={styles.left} />
                   <Button
-                    variant="h6"
+                   
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -137,7 +137,7 @@ class Navbar extends React.Component {
                     />
                   </Button>
                   <Button
-                    variant="h6"
+                   
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -148,7 +148,7 @@ class Navbar extends React.Component {
                   <div className={styles.right}>
                     <Button
                       color="inherit"
-                      variant="h6"
+                      
                       underline="none"
                       className={styles.rightLink}
                       href="/login"
@@ -157,7 +157,7 @@ class Navbar extends React.Component {
                     </Button>
                     <Button
                       color="inherit"
-                      variant="h6"
+                     
                       underline="none"
                       className={styles.rightLink}
                       href="/signup"
