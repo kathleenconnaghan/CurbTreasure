@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#fbcc5c'
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -46,7 +46,7 @@ const AuthForm = props => {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <LockOutlinedIcon style={{ color: '#fff'}}/>
         </Avatar>
         <Typography component="h1" variant="h5">
           {displayName}
@@ -78,7 +78,12 @@ const AuthForm = props => {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            color="#fbcc5c"
+            style={{backgroundColor: '#7ba4ca', color: '#FFFFFF'}}
+
+
+
+            
             className={classes.submit}
           >
             {displayName}

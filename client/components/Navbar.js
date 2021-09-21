@@ -15,14 +15,14 @@ import { palette } from '@material-ui/system';
 
 
 function AppBar(props) {
-  return <MuiAppBar elevation={0} position="static" {...props} color="#ffffff"
+  return <MuiAppBar elevation={0} position="static" {...props} 
   />;
 }
 
 
 const toolbarStyles = theme => ({
   root: {
-    color:"#8b7155",
+    
     height: 64,
     [theme.breakpoints.up("sm")]: {
       height: 20,
@@ -95,7 +95,7 @@ class Navbar extends React.Component {
                     />
                   </Button>
                   <Button
-                    style={{ backgroundColor: '#8b7155', margin: 10 }}
+                    style={{ backgroundColor: '#fbcc5c', margin: 10 }}
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -104,7 +104,7 @@ class Navbar extends React.Component {
                     {"Browse Items"}
                   </Button>
                   <Button
-                    style={{ backgroundColor: '#8b7155', margin: 10 }}
+                    style={{ backgroundColor: '#7ba4ca', margin: 10 }}
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -113,7 +113,7 @@ class Navbar extends React.Component {
                     {"Add Item"}
                   </Button>
                   <Button
-                  style={{ backgroundColor: '#8b7155', margin: 10 }}
+                  style={{ backgroundColor: '#b59b9f', margin: 10 }}
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -144,7 +144,7 @@ class Navbar extends React.Component {
                     />
                   </Button>
                   <Button
-                   style={{ backgroundColor: '#8b7155', margin: 10 }}
+                   style={{ backgroundColor: '#fbcc5c', margin: 10 }}
                     underline="none"
                     color="inherit"
                     className={styles.title}
@@ -155,7 +155,7 @@ class Navbar extends React.Component {
                   <div className={styles.right}>
                     <Button
                       color="inherit"
-                      style={{ backgroundColor: '#8b7155', margin: 10 }}
+                      style={{ backgroundColor: '#7ba4ca', margin: 10 }}
                       underline="none"
                       className={styles.rightLink}
                       href="/login"
@@ -164,7 +164,7 @@ class Navbar extends React.Component {
                     </Button>
                     <Button
                       color="inherit"
-                      style={{ backgroundColor: '#8b7155', margin: 10 }}
+                      style={{ backgroundColor: '#b59b9f', margin: 10 }}
                       underline="none"
                       className={styles.rightLink}
                       href="/signup"
