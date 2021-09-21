@@ -14,7 +14,7 @@ import { Box } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
-    minWidth: 275,
+    minWidth: 400,
   },
   bullet: {
     display: "inline-block",
@@ -28,7 +28,7 @@ const styles = theme => ({
     marginBottom: 2,
   },
   media: {
-    height: 275,
+    height: 400,
   },
 
 });
@@ -44,56 +44,58 @@ export class Items extends React.Component {
       let allItems = 'Loading.....'
 
       const imageStyle = {
-        width: '200px'
+        width: '200px',
+        heigth: '200px',
       };
       if(items.length) {
         
         allItems = items.map(item => {
           return ( 
             <Box m={20}>
-            <div key={item.id}>
-              <Box m={2}>
-              <Card className={styles.title}>
-              <div>
+              <div key={item.id}>
+                <Box m={2}>
+                <Card className={styles.title}>
+                <div>
 
-              <Button href ={`/items/${item.id}`}className="itemlink"> </Button>
+                  <Button href ={`/items/${item.id}`}className="itemlink"> </Button>
 
-              <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image= {item.imageUrl}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-        {item.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-        {item.category}
-        </Typography>
-        <Typography>
-        {item.description}
-        </Typography>
-        <Typography>
-        {item.location}
-        </Typography>
-      </CardContent>
-      <CardActions>
-      <Button size = 'small' href ={`/items/${item.id}`}className="itemlink" > {"View"}</Button>
+                      <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                          component="img"
+                          height="400"
+                          image= {item.imageUrl}
+                        />
+                            <CardContent>
+                              <Typography gutterBottom variant="h5" component="div">
+                              {item.title}
+                              </Typography>
 
-      </CardActions>
-    </Card>
-  
+                              <Typography>
+                              {item.category}
+                              </Typography>
 
-                  </div>
-                  </Card>
-                  </Box>
-              </div>
+                              <Typography>
+                              {item.description}
+                              </Typography>
+
+                              <Typography>
+                              {item.location}
+                              </Typography>
+
+                            </CardContent>
+                        <CardActions>
+                            <Button size = 'small' href ={`/items/${item.id}`}className="itemlink" > {"View"}</Button>
+
+                        </CardActions>
+                      </Card>
+                </div>
+                </Card>
               </Box>
-          )
-
-        })
-      }
+            </div>
+          </Box>
+        )
+    })
+  }
 
       return (
         <div>
