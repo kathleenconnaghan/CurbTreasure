@@ -3,7 +3,7 @@
 body {
   font-family: 'Merienda', cursive;
   color:rgb(72,47,37);
-  background-color:rgb(236,207,137);
+  
   text-align: left;
   display: flex;
   align-content: space-between;
@@ -17,9 +17,7 @@ a {
   width: 100%;
 }
 
-a:hover {
-  text-decoration: underline;
-}
+
 
 .button {
   width: 500px;
@@ -28,10 +26,10 @@ a:hover {
   border: 2px solid black;
   border-radius: 2px;
   text-decoration: none;
-  color: rgb(72,47,37);
-  background-color: rgb(255, 233, 237);
+  color: rgb(17, 11, 17);
+  background-color: rgb(234, 208, 149);
   text-align: center;
-  transition: hover 0.2s;
+  
 }
 
 
@@ -59,12 +57,10 @@ a:hover {
   width: 0;
   height: 2px;
   background-color: rgba(195,80,86,255);
-  transition: width .3s ease-in-out;
+ 
   text-decoration: none;
 }
-#navbar a:hover:after {
-  width: 100%;
-}
+
 
 h2 {
   color:rgb(72,47,37)

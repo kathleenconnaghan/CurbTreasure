@@ -15,7 +15,6 @@ import { Box } from "@material-ui/core";
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import CategoryOutlinedIcon from '@material-ui/icons/CategoryOutlined';
 
-
 // -------------STYLES 
 
 const styles = theme => ({
@@ -36,6 +35,7 @@ const styles = theme => ({
   media: {
     height: 140,
   },
+  
 });
 
 //-----------------------------------COMPONENT
