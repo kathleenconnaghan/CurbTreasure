@@ -33,8 +33,9 @@ const styles = theme => ({
     marginBottom: 12,
   },
   media: {
-    height: 140,
+    height: 600,
   },
+
   
 });
 
@@ -77,8 +78,6 @@ export class SingleItem extends React.Component {
 }
 const mapState = state => {
   return {
-    auth: state.auth,
-    isLoggedIn: !!state.auth.id,
     item: state.item,
   };
 };

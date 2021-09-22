@@ -100,7 +100,9 @@ export class Items extends React.Component {
       return (
         <div>
           <h1> Free Items to Collect </h1>
-          <div> {allItems} </div>
+          <Box mt={0}>
+          {allItems}
+          </Box>
         </div>
       )
 
