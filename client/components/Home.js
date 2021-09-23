@@ -48,7 +48,11 @@ class Home extends React.Component {
               </div>
         </Typography>
       
-        <Button href="/items">Click Here to Shop Our itemssss!</Button>
+        <Button href="/items" 
+        style={{ backgroundColor: '#ddbe8f', margin: 10 , fontSize: 28}}
+        >
+         Browse Items
+        </Button>
       </Box>
      
     );

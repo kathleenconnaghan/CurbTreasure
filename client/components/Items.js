@@ -22,13 +22,13 @@ const styles = theme => ({
     transform: "scale(0.8)",
   },
   title: {
-    fontSize: 14,
+    fontSize: 20,
   },
   pos: {
-    marginBottom: 2,
+    marginBottom: 0,
   },
   media: {
-    height: 400,
+    height: 0,
   },
 
 });
@@ -63,10 +63,12 @@ export class Items extends React.Component {
                         <CardMedia
                           component="img"
                           height="400"
+                          href ={`/items/${item.id}`}
                           image= {item.imageUrl}
                         />
+                        
                             <CardContent>
-                              <Typography gutterBottom variant="h5" component="div">
+                              <Typography gutterBottom variant="h5" component="div" style={{ backgroundColor: '#ddbe8f', margin: 0 , fontSize: 28}}>
                               {item.title}
                               </Typography>
 
@@ -84,7 +86,7 @@ export class Items extends React.Component {
 
                             </CardContent>
                         <CardActions>
-                            <Button size = 'small' href ={`/items/${item.id}`}className="itemlink" > {"View"}</Button>
+                            <Button size = 'small' href ={`/items/${item.id}`}className="itemlink" style={{ backgroundColor: '#cbe3f3', margin: 0 , fontSize: 28}}> {"View"}</Button>
 
                         </CardActions>
                       </Card>
