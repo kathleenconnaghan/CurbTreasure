@@ -160,37 +160,18 @@ class AddItem extends React.Component {
               <h1> Share your treasure! </h1>
 
            <div>
-  
-               {/* <Button input type="file" onChange={this.onFileChange}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            startIcon= {<AddPhotoAlternateIcon />}
-          >
-            {"Provide A Photo"}
-          </Button> */}
-
-          {/* <Button input type="file" onChange={this.onFileChange}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            startIcon= {<AddPhotoAlternateIcon />}
-          >
-            {"Provide A Photo"}
-          </Button> */}
 
           <Button
             variant="contained"
             component="label"
-            color="primary"
+            style={{ color: '#fff', backgroundColor:  '#7ba4ca', margin: 0 , fontSize: 28}}
           >
             Provide a Photo
             <input
               type="file"
               hidden
               onChange={this.onFileChange}
+      
             />
           </Button>
 
@@ -268,8 +249,11 @@ class AddItem extends React.Component {
             fullWidth
             variant="contained"
             color="primary"
-            startIcon={<PublishIcon/>}>
+            startIcon={<PublishIcon fontSize="large" />}
+            style={{ backgroundColor: '#7ba4ca', margin: 0 , fontSize: 28}}
+            >
             {"Upload Your Treasure"}
+            
           </Button>
       </form>
       </div>
