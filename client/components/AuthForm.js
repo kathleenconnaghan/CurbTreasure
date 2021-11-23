@@ -79,7 +79,8 @@ const AuthForm = props => {
             type="submit"
             fullWidth
             variant="contained"
-            style={{backgroundColor: '#7ba4ca', color: '#FFFFFF'}}
+            color="primary"
+            style={{color: '#FFFFFF'}}
             className={classes.submit}
           >
             {displayName}
