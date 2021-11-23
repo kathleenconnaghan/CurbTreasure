@@ -1,5 +1,5 @@
 import React from 'react';
-import { addNewItem } from "../store/items"; 
+import { addNewItem } from "../store/items";
 import { connect } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -16,6 +16,7 @@ import Container from '@material-ui/core/Container';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import PublishIcon from '@material-ui/icons/Publish';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import history from "../history";
 
 //------------------------Styles
 
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  
+
 }));
 
 //-------------------Add Item Class Component
@@ -46,21 +47,21 @@ const useStyles = makeStyles((theme) => ({
 class AddItem extends React.Component {
   constructor(props){
     super(props)
-    this.state = { 
-      title:'', 
-      description:'', 
-      location:'', 
-      category:'', 
+    this.state = {
+      title:'',
+      description:'',
+      location:'',
+      category:'',
       previewImage: undefined,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  
+
   // --------------- TEXT HANDLE SUBMIT --------------------------
   handleSubmit(event){
-    
-    
+
+
     const { title, description, location, category,} = this.state
     event.preventDefault()
     // alert(`
@@ -75,21 +76,21 @@ class AddItem extends React.Component {
       console.log(this.state);
       // convert image file to base64 string
       this.props.addNewItem({
-        title: this.state.title, 
+        title: this.state.title,
         description: this.state.description,
         location: this.state.location,
         category: this.state.category,
         imageUrl: reader.result
-        
+
       });
     }, false);
     reader.readAsDataURL(this.state.selectedFile);
   }
-  
+
   // --------------- TEXT HANDLE CHANGE --------------------------
   handleChange(event){
     this.setState({
-      [event.target.name] : event.target.value, // name is applicable for all below 
+      [event.target.name] : event.target.value, // name is applicable for all below
       // previewImage : event.target.selectedFile,
     });
   }
@@ -111,18 +112,18 @@ class AddItem extends React.Component {
       //     </div>
       //   )}
   };
-      
+
   fileData = () => {
     if (this.state.selectedFile) {
-      
+
       return (
         <div>
           <h2>Preview</h2>
-  
+
           {this.state.previewImage && (
           <div>
             <img className="preview my20" src={this.state.previewImage} alt="" height= "300" width= "300"/>
-            
+
           </div>
         )}
             <Typography>File Name: {this.state.selectedFile.name}</Typography>
@@ -149,29 +150,30 @@ class AddItem extends React.Component {
 
     } = this.state;
     return(
-    
-      
+
+
       <Container component="main" maxWidth="xs">
-        
+
       <div>
         <div>
           <div>
-    
+
               <h1> Share your treasure! </h1>
 
            <div>
 
           <Button
             variant="contained"
+            color="primary"
             component="label"
-            style={{ color: '#fff', backgroundColor:  '#7ba4ca', margin: 0 , fontSize: 28}}
+            style={{ color: '#fff', margin: 0 , fontSize: 28}}
           >
             Provide a Photo
             <input
               type="file"
               hidden
               onChange={this.onFileChange}
-      
+
             />
           </Button>
 
@@ -186,11 +188,11 @@ class AddItem extends React.Component {
         {this.fileData()}
        </div>
       </div>
-      
 
-    
+
+
 {/* -------------------- TEXT RENDER --------------------------------- */}
-  
+
       <form onSubmit={this.handleSubmit}>
         {/* -----------------------------------------------TITLE */}
         <TextField
@@ -250,10 +252,10 @@ class AddItem extends React.Component {
             variant="contained"
             color="primary"
             startIcon={<PublishIcon fontSize="large" />}
-            style={{ backgroundColor: '#7ba4ca', margin: 0 , fontSize: 28}}
+            style={{ margin: 0 , fontSize: 28}}
             >
             {"Upload Your Treasure"}
-            
+
           </Button>
       </form>
       </div>
@@ -268,7 +270,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addNewItem: (item) => dispatch(addNewItem(item)),
+  addNewItem: (item) => {
+    dispatch(addNewItem(item));
+    history.push("/items");
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

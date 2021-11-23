@@ -1,129 +1,140 @@
 import React from "react";
-import { connect } from "react-redux";
-import { fetchItems } from "../store/items";
-import { Link } from "react-router-dom";
-import { withStyles } from "@material-ui/core/styles";
+import {connect} from "react-redux";
+import {fetchItems} from "../store/items";
+import {Link} from "react-router-dom";
+import {withStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Box } from "@material-ui/core";
+import {Box} from "@material-ui/core";
+import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
 
 
 const styles = theme => ({
-  root: {
-    minWidth: 400,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 20,
-  },
-  pos: {
-    marginBottom: 0,
-  },
-  media: {
-    height: 0,
-  },
+    root: {
+        minWidth: 400,
+    },
+    bullet: {
+        display: "inline-block",
+        margin: "0 2px",
+        transform: "scale(0.8)",
+    },
+    title: {
+        fontSize: 20,
+    },
+    pos: {
+        marginBottom: 0,
+    },
+    media: {
+        height: 0,
+    },
 
 });
 
 export class Items extends React.Component {
-  componentDidMount() {
-    this.props.getItems();
-  }
+    componentDidMount() {
+        this.props.getItems();
+    }
 
     render() {
-      const items = this.props.items;
+        const items = this.props.items;
 
-      let allItems = 'Loading.....'
+        let allItems = 'Loading.....'
 
-      const imageStyle = {
-        width: '200px',
-        heigth: '200px',
-      };
-      if(items.length) {
-        
-        allItems = items.map(item => {
-          return ( 
-            <Box m={20}>
-              <div key={item.id}>
-                <Box m={2}>
-                <Card className={styles.title}>
-                <div>
+        const imageStyle = {
+            width: '200px',
+            heigth: '200px',
+        };
+        if (items.length) {
 
-                  <Button href ={`/items/${item.id}`}className="itemlink"> </Button>
+            console.log(items);
+            allItems = items.map(item => {
+                return (
+                    <Box key={item.id}>
+                        <div>
+                            <Box m={2}>
+                                <Card className={styles.title}>
+                                    <div>
 
-                      <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                          component="img"
-                          height="400"
-                          href ={`/items/${item.id}`}
-                          image= {item.imageUrl}
-                        />
-                        
-                            <CardContent>
-                              <Typography gutterBottom variant="h5" component="div" style={{ backgroundColor: '#ddbe8f', margin: 0 , fontSize: 28}}>
-                              {item.title}
-                              </Typography>
+                                        <Card sx={{maxWidth: 345}}>
 
-                              <Typography>
-                              {item.category}
-                              </Typography>
+                                            <CardContent>
 
-                              <Typography>
-                              {item.description}
-                              </Typography>
+                                                <Typography gutterBottom variant="h5" component="div" style={{
+                                                    fontSize: 28
+                                                }}>
+                                                    {item.title}
+                                                </Typography>
 
-                              <Typography>
-                              {item.location}
-                              </Typography>
+                                                <CardMedia
+                                                    component="img"
+                                                    height="400"
+                                                    href={`/items/${item.id}`}
+                                                    image={item.imageUrl}
+                                                />
 
-                            </CardContent>
-                        <CardActions>
-                            <Button size = 'small' href ={`/items/${item.id}`}className="itemlink" style={{ backgroundColor: '#cbe3f3', margin: 0 , fontSize: 28}}> {"View"}</Button>
+                                                <Typography>
+                                                    {item.category}
+                                                </Typography>
 
-                        </CardActions>
-                      </Card>
-                </div>
-                </Card>
-              </Box>
+                                                <Typography>
+                                                    {item.description}
+                                                </Typography>
+
+                                                <Typography>
+                                                    <a href={'https://maps.google.com/?q=' + item.location} target="_blank">
+                                                        <RoomOutlinedIcon/> {item.location}
+                                                    </a>
+                                                </Typography>
+
+                                            </CardContent>
+                                            <CardActions>
+                                                <Button size="small" href={`/items/${item.id}`}
+                                                        variant="contained" color="primary"
+                                                        style={{
+                                                            maxWidth: '30rem',
+                                                            fontSize: 24
+                                                        }}> {"View"}</Button>
+
+                                            </CardActions>
+                                        </Card>
+                                    </div>
+                                </Card>
+                            </Box>
+                        </div>
+                    </Box>
+                )
+            })
+        }
+
+        return (
+            <div className="items-comp">
+                <h1> Free Items to Collect </h1>
+                <Box mt={0}>
+                    {allItems}
+                </Box>
             </div>
-          </Box>
         )
-    })
-  }
-
-      return (
-        <div>
-          <h1> Free Items to Collect </h1>
-          <Box mt={0}>
-          {allItems}
-          </Box>
-        </div>
-      )
 
     }
-  }
+}
 
 // ---------------------------------------------------------- Map State & Dispatch
 const mapState = state => {
-  return {
-    items: state.items,
-  };
+    return {
+        items: state.items,
+    };
 };
 
 const mapDispatch = dispatch => {
-  return {
-    getItems: () => {
-      dispatch(fetchItems());
-    },
-  };
+    return {
+        getItems: () => {
+            dispatch(fetchItems());
+        },
+    };
 };
 
 export default connect(mapState, mapDispatch)(Items);

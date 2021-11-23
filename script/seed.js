@@ -11,11 +11,11 @@ async function seed() {
   console.log("db synced!");
 
   //---------------- Creating Users
-  
+
   const users = await Promise.all([
-    User.create({ 
-        email: "johnjoe@mail.com", 
-        password: "123", 
+    User.create({
+        email: "johnjoe@mail.com",
+        password: "123",
         admin: false,
     }),
     User.create({
@@ -95,18 +95,18 @@ async function seed() {
         imageUrl: 'https://a0.amlimg.com/ZTViMjI4OTVhNTU4NjBmMmZmNWFhMGY1NmM1MTM3NzL23teoSRQRV181I8fcKGrmaHR0cDovL21lZGlhLmFkc2ltZy5jb20vOGM4NjI0OTkyYWE2YTViOWIwNzE5OTY3ODhjNjE5NWE3MWE0NTk2MjViYmJkODFiZDhjZmI0Yzk3NGQ3NTlkZS5qcGd8fHx8fHwzOTZ4MjIzfGh0dHA6Ly93d3cuYWR2ZXJ0cy5pZS9zdGF0aWMvaS93YXRlcm1hcmsucG5nfHx8.jpg',
         userId: 2
       }),
-    
+
   ]);
 
 
 }
 
-console.log(`Seeds Planted!`);
 
 async function runSeed() {
   console.log("Planting little wee seeds....");
   try {
     await seed();
+    console.log(`Seeds Planted!`);
   } catch (err) {
     console.error(err);
     console.error('Nothing Seeded - Oh No!!!');

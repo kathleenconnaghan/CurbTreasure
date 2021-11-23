@@ -14,6 +14,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import history from "../history";
 
 //-------------------------- STYLES MATERIAL UI
 
@@ -78,12 +79,7 @@ const AuthForm = props => {
             type="submit"
             fullWidth
             variant="contained"
-            color="#fbcc5c"
             style={{backgroundColor: '#7ba4ca', color: '#FFFFFF'}}
-
-
-
-            
             className={classes.submit}
           >
             {displayName}
@@ -128,6 +124,7 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value;
       const password = evt.target.password.value;
       dispatch(authenticate(email, password, formName));
+      history.push("/items");
     },
   };
 };

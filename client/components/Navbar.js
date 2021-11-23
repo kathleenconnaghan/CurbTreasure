@@ -11,12 +11,14 @@ import Toolbar from "@material-ui/core/Toolbar";
 import MuiAppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import { palette } from '@material-ui/system';
+import {Box, Drawer, IconButton, List, ListItem, ListItemText} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 
 
 function AppBar(props) {
-  return <MuiAppBar elevation={0} position="static" {...props} 
-  style={{ background: '#ddbe8f' }}
+  return <MuiAppBar elevation={0} position="static" {...props}
+  style={{ background: '#3f51b5' }}
   />;
 }
 
@@ -64,118 +66,111 @@ const styles = theme => ({
 //=========================== Component
 
 class Navbar extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      drawerOpen: false
+    }
+  }
+
+  toggleDrawer(open) {
+    console.log('toggle', open);
+    this.setState({
+      drawerOpen: open
+    });
+  }
+
   render() {
 
     return (
       <div id="navbar">
-        <img src="https://img.icons8.com/bubbles/2x/treasure-chest.png" />
-         <img src="https://fontmeme.com/permalink/210816/5f8f6f432b9bee4830d9e3d4b037b357.png" alt="pirates-of-the-caribbean-font" border="0"/>
-        <nav>
-          {this.props.isLoggedIn ? (
-            <div>
-              <AppBar position="fixed">
-                <Toolbar className={styles.toolbar}>
-                  <div className={styles.left} />
-            
-                  <Button
-                 
-                    underline="none"
-                    color="#fbcd59"
-                    className={styles.title}
-                    href="/"
-                  >
-                     <img
-                      src="https://img.icons8.com/bubbles/2x/treasure-chest.png"/>
-                     <img src="https://fontmeme.com/permalink/210816/5f8f6f432b9bee4830d9e3d4b037b357.png" alt="pirates-of-the-caribbean-font" border="0"
 
-                    />
-                  </Button>
-                  <Button
-                    style={{ backgroundColor: '#ddbe8f', margin: 10 , fontSize: 28}}
-                    underline="none"
-                    color="inherit"
-                    className={styles.title}
-                    href="/items"
-                  >
-                    {"Browse Items"}
-                  </Button>
-                  <Button
-                    style={{ backgroundColor: '#ddbe8f', margin: 10 , fontSize: 28}}
-                    underline="none"
-                    color="inherit"
-                    className={styles.title}
-                    href="/addItem"
-                  >
-                    {"Add Item"}
-                  </Button>
-                  <Button
-                  style={{ backgroundColor: '#ddbe8f', margin: 10 , fontSize: 28}}
-                    underline="none"
-                    color="inherit"
-                    className={styles.title}
-                    onClick={() => {
-                      this.props.handleClick();
-                    }}
-                  >
-                    {"Log Out"}
-                  </Button>
-          
-                </Toolbar>
-              </AppBar>
-            </div>
-          ) : ( // If the user is not logged in
-            <div>
-              <AppBar position="fixed">
-                <Toolbar className={styles.toolbar}>
-                  <div className={styles.left} />
-                  <Button
-                 
-                    underline="none"
-                
-                    className={styles.title}
-                    href="/"
-                  >
-                    <img src="https://img.icons8.com/bubbles/2x/treasure-chest.png"/>
-                        <img src="https://fontmeme.com/permalink/210816/5f8f6f432b9bee4830d9e3d4b037b357.png" alt="pirates-of-the-caribbean-font" border="0"
-                    />
-                  </Button>
-                  <Button
-                   style={{ backgroundColor: '#fbcc5c', margin: 10 }}
-                    underline="none"
-                    color="inherit"
-                    className={styles.title}
-                    href="/items"
-                  >
-                    {"Browse Items"}
-                  </Button>
-                  <div className={styles.right}>
-                    <Button
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
+            <Toolbar>
+
+              <div className="inner-navbar">
+                <div className="navbar-title-area">
+                  <IconButton
+                      edge="start"
                       color="inherit"
-                      style={{ backgroundColor: '#7ba4ca', margin: 10 }}
-                      underline="none"
-                      className={styles.rightLink}
-                      href="/login"
-                    >
+                      aria-label="menu"
+                      sx={{ mr: 2 }}
+                      onClick={() => this.toggleDrawer(true)}
+                  >
+                    {/*<MenuIcon />*/}
+                    <svg style={{width: '1em', height: '1em'}} viewBox="0 0 24 24">
+                      <path style={{fill: 'white'}} d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                    </svg>
+                  </IconButton>
+                  <Drawer
+                      anchor="left"
+                      open={this.state.drawerOpen}
+                      onClose={() => this.toggleDrawer(false)}
+                  >
+                    <List>
+                      <ListItem button component="a" href="/items">
+                        <ListItemText primary="Browse Items" />
+                      </ListItem>
+                      {this.props.isLoggedIn && (
+                          <ListItem button component="a" href="/addItem">
+                            <ListItemText primary="Add Item" />
+                          </ListItem>
+                      )}
+                      {this.props.isLoggedIn ? (
+                        <ListItem button component="a" onClick={() => { this.props.handleLogoutClick(); }}>
+                          <ListItemText primary="Log Out" />
+                        </ListItem>
+                      ) : (
+                        <ListItem button component="a" href="/login">
+                          <ListItemText primary="Log In" />
+                        </ListItem>
+                      )}
+                      {!this.props.isLoggedIn && (
+                          <ListItem button component="a" href="/signup">
+                            <ListItemText primary="Sign Up" />
+                          </ListItem>
+                      )}
+                    </List>
+                  </Drawer>
+                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} className="curb-treasure-title">
+                    <a href="/">
+                      <img src="https://img.icons8.com/bubbles/2x/treasure-chest.png"/>
+                      <span className="curb-treasure-title">Curb Treasure</span>
+                    </a>
+                  </Typography>
+                </div>
+
+                <div className="navbar-button-list">
+                  <Button className="nav-bar-button" href="/items">
+                    {"Browse Items"}
+                  </Button>
+                  {this.props.isLoggedIn && (
+                      <Button className="nav-bar-button" href="/addItem">
+                        {"Add Item"}
+                      </Button>
+                  )}
+                  {this.props.isLoggedIn ? (
+                      <Button className="nav-bar-button" onClick={() => { this.props.handleLogoutClick(); }}>
+                        {"Log Out"}
+                      </Button>
+                  ): (
+                    <Button className="nav-bar-button" href="/login">
                       {"Log In"}
                     </Button>
-                    <Button
-                      color="inherit"
-                      style={{ backgroundColor: '#b59b9f', margin: 10 }}
-                      underline="none"
-                      className={styles.rightLink}
-                      href="/signup"
-                    >
-                      {"Sign Up"}
-                    </Button>
-              
-                  </div>
-                </Toolbar>
-              </AppBar>
-              <div className={styles.placeholder} />
-            </div>
-          )}
-        </nav>
-        <hr />
+                  )}
+                  {!this.props.isLoggedIn && (
+                      <Button className="nav-bar-button" href="/signup">
+                        {"Sign Up"}
+                      </Button>
+                  )}
+                </div>
+              </div>
+
+            </Toolbar>
+          </AppBar>
+        </Box>
       </div>
     );
   }
@@ -186,13 +181,13 @@ class Navbar extends React.Component {
 const mapState = state => {
   return {
     isLoggedIn: !!state.auth.id,
-    auth: state.auth,
+    auth: state.auth
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    handleClick() {
+    handleLogoutClick() {
       dispatch(logout());
     },
   };
